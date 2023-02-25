@@ -26,15 +26,26 @@ navToggle.addEventListener('click', () => {
 
 
 
-const api = "https://apipetshop.herokuapp.com/api/articulos";
+const api = "https://find-a-repository-mindy-petshop-back.onrender.com/articulo";
 
-fetch(api)
-  .then((Response) => Response.json())
-  .then((data) => mostrarPagina(data));
+async function getData(){
+  try{
+    let res = await fetch(api)
+    let data = await res.json()
+    
+    let articulos = data
+    console.log(articulos);
+    mostrarPagina(articulos);
+    return articulos
+  } catch(error){
+    console.log(error);
+  }
+}
+getData()
 
 const mostrarPagina = (data) => {
-  const arrayShop = data.response;
-
+  const arrayShop = data.Response;
+  console.log(arrayShop);
   localStorage.removeItem('producto')
 
   const contenedorCarta = document.querySelector(".cartas"); // DONDE SE IMPRIME LAS CARTAS

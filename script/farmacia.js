@@ -28,14 +28,14 @@ navToggle.addEventListener('click', () => {
 
 
 
-const api = "https://apipetshop.herokuapp.com/api/articulos";
+const api = "https://find-a-repository-mindy-petshop-back.onrender.com/articulo";
 
 fetch(api)
-  .then((Response) => Response.json())
+  .then((res) => res.json())
   .then((data) => mostrarPagina(data));
 
 const mostrarPagina = (data) => {
-  const arrayShop = data.response;
+  const arrayShop = data.Response;
 
   localStorage.removeItem('farmacia')
 
